@@ -1,0 +1,464 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Poppins:wght@400;500;600&display=swap');
+
+/* CSS Variables */
+:root {
+  --primary-pink: #ffb7d5;
+  --dark-pink: #f080a0;
+  --light-pink: #ffe6f0;
+  --white: #ffffff;
+  --text-dark: #5a3d44;
+  --calendar-blue: #4285f4;
+  --shadow-pink: rgba(240, 128, 160, 0.4);
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--primary-pink) 0%, var(--light-pink) 50%, var(--primary-pink) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* App Container */
+.app {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Page Container */
+.page-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Fixed portrait movement zone for "No" button */
+.no-button-boundary {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 340px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating Hearts Background */
+.hearts-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  color: rgba(255, 255, 255, 0.6);
+  animation: floatUp 12s linear infinite;
+  pointer-events: none;
+}
+
+.floating-heart svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(240, 128, 160, 0.3));
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(30px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+}
+
+/* Heart Icon */
+.heart-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+  color: var(--dark-pink);
+  animation: heartbeat 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px var(--shadow-pink));
+}
+
+.heart-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+}
+
+/* Question Title */
+.question-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  line-height: 1.2;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+/* Base Button Styles */
+.btn {
+  position: relative;
+  padding: 1rem 3rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  opacity: 1 !important;
+  visibility: visible !important;
+  min-width: 140px;
+  min-height: 56px;
+  line-height: 1;
+  justify-content: center;
+}
+
+/* Button hover expanding animation */
+.btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Yes Button */
+.btn-yes {
+  background: linear-gradient(135deg, var(--dark-pink) 0%, #ff6b9d 100%);
+  color: var(--white);
+  transform-origin: center;
+}
+
+.btn-yes:hover {
+  background: linear-gradient(135deg, #ff6b9d 0%, var(--dark-pink) 100%);
+}
+
+/* Yes button clicked state - turns white */
+.btn-yes.clicked,
+.btn-yes:active {
+  background: var(--white) !important;
+  color: var(--dark-pink) !important;
+  transform: scale(0.95);
+}
+
+/* No Button Wrapper */
+.no-button-wrapper {
+  position: relative;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-button-spacer {
+  min-width: 140px;
+  min-height: 56px;
+}
+
+/* No Button - positioned absolutely within wrapper */
+.btn-no {
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+  color: var(--text-dark);
+  position: relative;
+  left: auto;
+  top: auto;
+}
+
+.btn-no-teleport {
+  position: absolute;
+  margin: 0;
+  transition: none !important;
+  transform: none !important;
+  z-index: 2;
+}
+
+.btn-no:hover {
+  transform: none;
+  background: linear-gradient(135deg, #bdbdbd 0%, #e0e0e0 100%);
+}
+
+/* Success Page */
+.success-page {
+  background: linear-gradient(135deg, var(--light-pink) 0%, var(--primary-pink) 100%);
+}
+
+.confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.success-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(240, 128, 160, 0.3);
+  max-width: 500px;
+  margin: 1rem;
+  backdrop-filter: blur(10px);
+  /* Ensure the success card is visible by default */
+  transform: none;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.celebration-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  color: #4caf50;
+}
+
+.celebration-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.success-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: var(--dark-pink);
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.heart-divider {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.heart-divider svg {
+  width: 32px;
+  height: 32px;
+  color: var(--dark-pink);
+  animation: float 2s ease-in-out infinite;
+}
+
+.heart-divider svg:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.heart-divider svg:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Calendar Button */
+.calendar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--calendar-blue) 0%, #3367d6 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.calendar-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(66, 133, 244, 0.5);
+}
+
+.calendar-btn.added {
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  cursor: default;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.calendar-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.love-note {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .btn {
+    width: 180px;
+    justify-content: center;
+    position: relative;
+  }
+
+  .no-button-spacer {
+    width: 180px;
+    min-height: 56px;
+  }
+  
+  .btn-no {
+    position: relative;
+  }
+  
+  .heart-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .success-content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .floating-heart {
+    animation: none;
+  }
+  
+  .confetti-canvas {
+    display: none;
+  }
+}
