@@ -332,7 +332,11 @@ const SuccessPage = () => {
       
         <div ref={contentRef} className="success-content">
           <div className="celebration-icon">
-            <img src="/blehhhhhh.gif" alt="Celebration cat" className="celebration-gif" />
+            <img
+              src={`${import.meta.env.BASE_URL}blehhhhhh.gif`}
+              alt="Celebration cat"
+              className="celebration-gif"
+            />
           </div>
         
         <h1 className="success-title">Yipeeee!!!</h1>
