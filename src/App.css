@@ -432,6 +432,10 @@ body {
   .btn-no {
     position: relative;
   }
+
+  .btn-no-teleport {
+    position: absolute !important;
+  }
   
   .heart-icon {
     width: 80px;

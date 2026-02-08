@@ -185,6 +185,12 @@ const QuestionPage = ({ onYes }: { onYes: () => void }) => {
     setNoButtonInstance((prev) => prev + 1)
   }
 
+  const handleNoHover = () => {
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      handleNoClick()
+    }
+  }
+
   const handleYesClick = () => {
     const btn = yesBtnRef.current
     if (!btn) return
@@ -258,7 +264,7 @@ const QuestionPage = ({ onYes }: { onYes: () => void }) => {
               <button
                 key={`no-inline-${noButtonInstance}`}
                 ref={noButtonRef}
-                onMouseEnter={handleNoClick}
+                onMouseEnter={handleNoHover}
                 onClick={handleNoClick}
                 className="btn btn-no"
               >
@@ -275,7 +281,7 @@ const QuestionPage = ({ onYes }: { onYes: () => void }) => {
         <button
           key={`no-teleport-${noButtonInstance}`}
           ref={noButtonRef}
-          onMouseEnter={handleNoClick}
+          onMouseEnter={handleNoHover}
           onClick={handleNoClick}
           className="btn btn-no btn-no-teleport"
           style={{ left: `${noButtonPosition.x}px`, top: `${noButtonPosition.y}px` }}
